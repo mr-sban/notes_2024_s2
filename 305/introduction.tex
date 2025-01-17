@@ -1,0 +1,137 @@
+
+\documentclass[12pt]{report}
+
+\input{preamble}
+\input{macros}
+\setlength\parindent{0pt}
+
+\title{\Huge{}\\}
+\author{\huge{}}
+\date{}
+
+\begin{document}
+% \maketitle
+% \newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+% \tableofcontents
+% \pagebreak
+
+\section{Phases}
+Project lifecycle
+\begin{enumerate}
+  \item Initiation
+        \begin{itemize}
+                \item Projects objective or need is identified
+                \item ``Can/should we do the project''
+                \item Roles are appointed
+        \end{itemize}
+  \item Planning
+        \begin{itemize}
+          \item Heaviest step for the project manager
+          \item Necessary steps are specified
+          \item Teams identify work/task needed to be done
+        \item Budget estimate costs
+                \item Known as \textbf{Push approach}
+                \item Identify the possible risks of the project and mitigations are put in place and communicated to stakeholders
+                \item Using agile project management is called \textbf{Pull based approach}
+        \end{itemize}
+  \item Implementation
+        \begin{itemize}
+          \item Project is put into work
+          \item Communication about progress is key both to project managers and stakeholders
+                \item Regularized team meetings such as SCRUMS
+        \end{itemize}
+  \item Closure
+        \begin{itemize}
+          \item Releasing the final deliverables
+          \item Handing documentation over to business
+                \item Communication of finalization to stakeholders
+        \end{itemize}
+\end{enumerate}
+Throughout the projects lifecycle we have ``mini-livecycles'' called \textbf{process groups} which are the following steps
+\begin{enumerate}
+  \item Initiating:
+  \item Planning
+  \item Executing
+  \item Monitoring and controlling
+        \begin{itemize}
+          \item While work is being done on the project we need to monitor progress with
+                \begin{itemize}
+                  \item The plan
+                  \item The requirements
+                  \item The budget
+                  \item The quality
+                \end{itemize}
+        \end{itemize}
+  \item Closing
+
+\end{enumerate}
+\textbf{Project management star model}
+
+\includegraphics[width=0.5\textwidth]{pm_star_model}
+
+\subsection{PMBOK}
+  Managing
+  \begin{itemize}
+    \item Integration
+          \begin{itemize}
+              \item Team defines scope of work
+              \item Preliminary schedule
+              \item Conceptual budget
+              \item Team builds a plan for executing the project based on the project profile
+              \item Plan for developing and tracking detailed schedule
+              \item Plan for building budget and estimating and tracking costs
+              \item IT plan (including communications)
+              \item Diagrams, flowcharts and responsibilities matrices
+          \end{itemize}
+    \item Scope: What will be done defined in an execution plan
+          \begin{itemize}
+                  \item Description of the scope
+                  \item Product acceptance criteria
+                  \item Project deliverables
+                  \item Project exclusions
+                  \item Project constraints
+                  \item Project assumptions
+          \end{itemize}
+          \nt{Change in the scope of a project can be very costly so we must manage and prepare for inevitable change}
+    \item Time/Schedule
+          \begin{itemize}
+            \item Schedule and incremental milestones in accordance with key features/dates
+            \item The longest path to completion is called the \textbf{Critical path}
+                  \item If critical path is shorter than the alloted time: \textit{Positive float or slack}
+            \item If critical path is longer than alloted time: \textit{Negative float}
+
+          \end{itemize}
+    \item Costs
+          \begin{itemize}
+                  \item Ballpark estimates increase in accuracy with more experience with previous projects and their associated actual versus estimated budgets
+                  \item As the project proceeds we must compare the estimate against actual costs and if there is deviation corrective action must be taken and shared with stakeholders
+          \end{itemize}
+    \item Quality
+    \item Human Resources
+          \begin{itemize}
+            \item Generally there are 2 types of members
+                  \begin{itemize}
+                    \item Functional managers and team who work on the tech and development of the project
+                          \item Process managers and team focus on the ``Project'' side of things such as planning, costs, and communication
+                  \end{itemize}
+          \end{itemize}
+    \item Communication
+          \begin{itemize}
+                  \item Regularized meetings to communicate progress and if it is going according to plan and if there is any corrective action needed
+          \end{itemize}
+    \item Risk:
+          \begin{itemize}
+              \item The likelyhood that an event will happen during the life of the project that will negatively affect the achivement of the project goals
+                  \item Project risk plan reflects the risk profile of the project and balances the investment of the mitigation against the benefit of the project
+                  \item Periodic risk-plan reviews during the life of the project
+          \end{itemize}
+    \item Procurement: External services/vendors
+    \item Stakeholders
+  \end{itemize}
+
+\textbf{Waterfall Project lifecycle}
+
+\includegraphics[width=0.5\textwidth]{waterfall_plcycle}
+\end{document}

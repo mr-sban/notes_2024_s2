@@ -1,0 +1,159 @@
+\documentclass[12pt]{report}
+
+\input{preamble}
+\input{macros}
+\setlength\parindent{0pt}
+
+\title{\Huge{}\\}
+\author{\huge{}}
+\date{}
+
+\begin{document}
+% \maketitle
+% \newpage% or \cleardoublepage
+% \pdfbookmark[<level>]{<title>}{<dest>}
+\pdfbookmark[section]{\contentsname}{toc}
+% \tableofcontents
+% \pagebreak
+\chapter{}
+
+\dfn{Software process}{
+  \begin{itemize}
+    \item \textbf{Specification}: defining what the system should do
+    \item \textbf{Design}: plans the overall architecture of the system including its modules, components and interfaces
+ \item \textbf{Development/implementation}:  s the implementation of the design
+ \item \textbf{Verification and Validation}: checking that it meets the design specifications and does what the customer wants.
+ \item \textbf{Evolution}: Checking that the system in response to changing customer needs
+ \item \textbf{Documentation}: Model and describe software products
+ \item \textbf{Planning}: Plan and manage the software development process
+  \end{itemize}
+}
+\nt{It's generally better to spend more time at the beginning of the project planning it out and what to do than jump into coding. Make many tiny commits rather than one huge one. Implement tests early.}
+\cor{Planning models}{
+  \textbf{General Models}
+  \begin{itemize}
+    \item Plan-Driven: Processes are planned in advance and progress is measured against the large plan.
+    \item Agile: Planning is incremental and easier to pivot in accordance to changing requirements.
+  \end{itemize}
+  \textbf{Specific Models}
+  \begin{itemize}
+    \item Waterfall: Plan-Driven. Separates phases based on specification, development, validation, and evolution.
+
+          \includegraphics[width=0.5\textwidth]{waterfall}
+
+    \item Incremental: Specification, development and validation are interleaved. Can be either plan-driven or agile. Developed as a series of incremental versions with each version adding functionality to the previous.
+
+          \includegraphics[width=0.5\textwidth]{incremental}
+
+    \item Integration and Configuration: System is assembled from existing components and configured in accordance to specifications
+  \end{itemize}
+}
+\textbf{How do we figure out what we are going to build?}
+\dfn{Requirements Engineering}{
+  \begin{itemize}
+          \item Elicitation and Analysis: What do the stakeholders expect from the system?
+
+          \includegraphics[width=0.5\textwidth]{requirement_engineering}
+
+          \item Specification: Defining requirements in detail.
+  \end{itemize}
+}
+\textbf{Summary of design process}
+
+\includegraphics[width=0.5\textwidth]{design_process}
+\chapter{Project planning}
+\dfn{Waterfall model}{
+  Characterized by:
+  \begin{itemize}
+    \item Sequential: one phase after another
+    \item Phase-based: one phase at a time
+    \item Document-driven: Transition between phases results in the production of formal documentation
+  \end{itemize}
+  \nt{Main problem is the lack of feedback until it's fully built, increases the risk of misunderstanding about requirements}
+  \textbf{Pros}
+  \begin{itemize}
+    \item Widely used with systems with clear user requirements
+    \item The output of the previous phase is input to the next phase
+    \item Work is performed within one monolithic cycle
+  \end{itemize}
+  \textbf{Cons}
+}
+\dfn{Spiral Model}{
+  Plan starts out vague and high-level, then is prototyped and iterateratively tested until its specifics form
+  \includegraphics[width=0.5\textwidth]{spiral_model}
+  \textbf{Pros}
+  \begin{itemize}
+    \item Widely used for system with unclear user requirements
+    \item Use for large complex systems
+    \item One iteration encompasses one or more acivities in the SW development
+    \item Work is performed in iterations, enhancing the existing versions until the system is complete
+    \item Change is easier to adapt to
+  \end{itemize}
+  \textbf{Cons}
+  \begin{itemize}
+    \item Not efficient for small projects
+    \item More management attention is required
+    \item Not all requirements are gathered up front for the entire lifecycle thus design issues may arise
+  \end{itemize}
+}
+\dfn{Incremental Model}{
+  Instead of providing the singular delivery such as in waterfall, incremental delivery delivers several incremental features which are a subset of the entire system.
+  \textbf{Pros}
+  \begin{itemize}
+    \item Customers can see the value being added every delivery cycle
+    \item Retains flexibility while communicating progress and what is yet to be built
+    \item Lower risk of overall project failure
+    \item Higher priority systems can receive more testing
+    \item Better for most businesses, e-commerce, and personal systems
+  \end{itemize}
+  \textbf{Cons}
+  \begin{itemize}
+    \item Difficult to implement for \textit{replacement} systems as increments have less functionality than the system being replaced
+    \item Problems for system architechture since not all requirements are collected upfront for the entire software lifecycle
+    \item If there is a change in developers they may have a hard time understanding the current stage of progress and where to go
+  \end{itemize}
+}
+\nt{Typically Iterative and Incremental models are combined due to the multiple opportunities for checking that the product is in line with requirements}
+\dfn{Agile}{
+  \begin{itemize}
+    \item Program specification, design, and implementation are inter-leaved
+    \item Focuses more on the software rather than ``design'' of it
+    \item Developed as a series of incremental versions with stakeholders involved in version specification and evaluation
+  \end{itemize}
+  \textbf{Principles}
+  \begin{itemize}
+    \item Customer involvement - The customer must be closely involved throughout the development process. Customers provide and prioritize system requirements and evaluate the system.
+    \item Incremental delivery - The software is developed in increments with the customer specifying the requirements in each increment.
+    \item People not process - The skills of the development team should be recognised and exploited. The team should be left to develop their own ways of working without prescriptive processes.
+    \item Embrace change - Expect the system requirements to change and design the system to accommodate these changes.
+    \item Maintain simplicity - Focus on simplicity in both the software being developed and in the development process used.  Actively work to eliminate complexity from the system.
+  \end{itemize}
+}
+\cor{SCRUM}{
+  There are 3 phases in SCRUM
+  \begin{enumerate}
+    \item The initial phase is an outline planning phase where you establish the general objectives for the project and design the software architecture.
+    \item This is followed by a series of sprint cycles, where each cycle develops an increment of the system.
+    \item The project closure phase wraps up the project, completes required documentation such as system help frames and user manuals and assesses the lessons learned from the project.
+  \end{enumerate}
+}
+\dfn{Extreme Programming (XP)}{
+  \begin{itemize}
+    \item Requirements are specified using scenarios which are composed of tasks
+    \item Programming pairs develop tests for each tast \textit{before} writing the code. All tests must be run for every build and only accepted if all tests are successful
+    \item Customers are responsible for defining scenarios which is then broken down into tasks
+  \end{itemize}
+  \textbf{Principles}
+  \begin{itemize}
+    \item Incremental planning - Requirements included in a release are determined by the time available and their relative priority.
+    \item Small Releases - The minimal useful set of functionality that provides business value is developed first. Releases of the system are frequent and incrementally add to the first release.
+    \item Simple Design - Enough design is carried out to meet the current requirements and no more.
+    \item Test first development - An automated unit test framework is used to write tests for a new piece of functionality before that functionality itself is implemented.
+    \item Refactoring - All developers are expected to refactor the code continuously as soon as possible code improvements are found. This keeps the code simple and maintainable.
+    \item Pair Programming - Developers work in pairs, checking each other’s work and providing the support to always do a good job.
+    \item Collective Ownership - The pairs of developers work on all areas of the system, so that no islands of expertise develop and all the developers own all the code. Anyone can change anything.
+    \item Continuous Integration - As soon as work on a task is complete it is integrated into the whole system. After any such integration, all the unit tests in the system must pass.
+    \item On-site Customer - The customer should be available full time for the use of the XP team.  The customer is a member of the development team and is responsible for bringing system requirements to the team for implementation.
+  \end{itemize}
+}
+\end{document}
