@@ -16,5 +16,155 @@
 % \tableofcontents
 % \pagebreak
 \chapter{}
+\dfn{Key points}{
+  \begin{enumerate}
+        \item Networks allow computers to communicate information. Communication requires a shared medium, a common language, and a protocol.
+        \item Protocols are used at all network layers to define the structure, content, timing, and actions involved in communicating between systems.
+        \item Understand the difference between packet switching and circuit switching and the fundamental Internet components.
+        \item The Internet supports two transmission protocols: TCP (connection-oriented reliable service) and UDP (connectionless unreliable service).
+  \end{enumerate}
+}
+\dfn{Communication}{
+  \begin{itemize}
+          \item The act of sending information from one party to another
+          \item Sender transmits the info to one or more receivers
+          \item For effective communication we need
+          \begin{itemize}
+            \item Shared medium accessible to both sender and receiver
+            \item Language or encoding representing the information sent
+                  \item Protocol or set of rules explaining how the medium is used by both the sender and receiver
+          \end{itemize}
+  \end{itemize}
+  Types of communication
+  \begin{itemize}
+    \item Broadcast communication: there is a single sender and multiple receivers
+          \item Point-to-point communication: there is a single sender and single receiver
+  \end{itemize}
+}
+\dfn{Protocol}{
+  Defines the format and order of messages exchanged between communicating parties and the actions associated with receiving, transmitting, and other events
+
+  \includegraphics[width=0.5\textwidth]{protocol_example}
+
+  Basically a ruleset, there are network protocols that function at various layers such as
+  \begin{itemize}
+    \item Physical layer protocols - define how bits are represented, encoded/decoded, and transmitted on the medium.
+    \item Link layer protocols - define how bits are segmented and grouped into frames or packets.
+    \item Protocols in upper layers define various services such as connections, error-handling, addressing, and routing.
+  \end{itemize}
+}
+\dfn{TCP/IP (Transmission Control Protocol/Internet Protocol)}{
+  The structure/language and protocol used for communicating between computers on the internet
+
+  \textbf{How it works}
+  \begin{itemize}
+          \item Information is broken into sequential fixed-size units called \textbf{packets}
+          \item Each packet has space for the unit of data, and also the destination IP address, and it's number in the sequence for reconstruction
+          \item Packets are sent over the internet one at a time with whatever route is available, \textbf{this is called packet switching}
+          \item Due to the fact that packets can take multiple routes, congestion and service interruptions do not delay transmissions
+  \end{itemize}
+  \nt{Standards for internet protocols are created by the \textbf{Internet Engineering Task Force (IETF)}. The documents are called \textbf{Requests for comments (RFCs)}}
+}
+
+\cor{User datagram protocol (UDP)}{
+  Provides connectionless service that performs no handshaking thus is faster than TCP, but also does not provide reliability, flow control or congestion control
+}
+\thm{Sending packets of data: host perspective}{
+\begin{itemize}
+  \item Gets application message
+        \item Breaks into packets of length $L$ bits
+        \item Transmits packets into access network at \textit{transmission rate/link capacity,link bandwidth} $R$
+\end{itemize}
+    \begin{align*}
+      \text{Packet transmission delay}=\text{Time needed to transmit L-bit to link}=\frac{L}{R\text{bits/sec}}
+    \end{align*}
+}
+\cor{Packet Switching: Store-and-Forward}{
+  \begin{itemize}
+    \item Transmission delay: takes L/R seconds to transmit L-bit packet into link at R bps
+          \item Store and forwared: The entire packet must arrive at router before it can be transmitted on next link
+          \item End-to-end Delay: $2\frac{L}{R}$(assuming zero propogation delay)
+  \end{itemize}
+  If the arrival rate is higher than the transmission rate of link then
+  \begin{itemize}
+    \item Packets will be queued and wait to be transmitted on link
+          \item Packets can be dropped if memory buffer fills up
+  \end{itemize}
+}
+\textbf{Packet Vs Circuit Switching}
+\begin{itemize}
+  \item Circuit switching: Networks reserve the resources needed for the duration of a communication before sending the data. These resources include buffers at switches and bandwidth on the links. Each communication link is divided among the number of circuits and the bandwidth is \textbf{$\frac{1}{n}$} of the total bandwidth supported on the link. This is devided up either by a fixed value (FDM), or each circuit gets the full bandwidth for a set block of time and rotates between them (TDM)
+        \item Packet switching: Networks don't reserve resources and the communicated data use the necessary resources on demand. Due to the store-forward method, there is a delay at \textit{every link} the packet traverses; therefore the delay is $\frac{L}{R}$ bps. Also incurs \textbf{queue delays} when waiting for the buffer to free up, depends on network traffic; if very busy could result in packet loss
+\end{itemize}
+\nt{
+  There are two main issues with circuit switching
+  \begin{enumerate}
+    \item They waste bandwidth and resources during idle times as each circuit is garanteed a dedicated bandwidth at all times whether it uses it or not
+          \item There is a significant overhead and complexity to setup circuits and the associated resources. This setup time introduces an initial delay that may be significant for short communications
+  \end{enumerate}
+
+}
+\section{Packet Delay and Loss}
+\begin{figure}[h]
+\caption{How packet loss and delay occurs}
+\centering
+\includegraphics[width=0.5\textwidth]{packet_delay}
+\end{figure}
+\textbf{Sources of Packet delay}
+\begin{enumerate}
+  \item Processing delay: Time to read header and direct packet
+        \item Queuing delay: Time waiting in queue to be transmitted (depends on congestion/load)
+        \begin{itemize}
+                \item It's traffic delay can be characterized by $\frac{La}{R}$ where $a$ is the \textbf{average packet arrival time}
+                \item $\frac{La}{R}\~0$: Average queueing delay small
+                \item $\frac{La}{R}\to 1$: Average queueing delay large
+                \item $\frac{La}{R} > 1$: More work than can be serviced at once
+        \end{itemize}
+  \item Transmission delay: Time to transmit packet on link
+        \item Propogation delay: Time to propogate from one end of link to the other (near speed of light)
+\end{enumerate}
+\begin{figure}[h]
+\caption{Sources of packet delay}
+\centering
+\includegraphics[width=0.5\textwidth]{packet_delay}
+\end{figure}
+These delays add up to a total delay called \textbf{$d_{\text{nodal}}$}
+\begin{align*}
+  d_{\text{nodal}}=d_{\text{queue}}+d_{\text{trans}}+d_{\text{prop}}
+\end{align*}
+\begin{itemize}
+  \item $d_{\text{proc}}$:
+        \begin{itemize}
+          \item Checks for bit errors
+          \item Determine the output link
+                \item Typically under a milisec
+        \end{itemize}
+        \item $d_{\text{queue}}$:
+        \begin{itemize}
+          \item Time waiting for output link for transmission
+                \item Depends on congestion level of router
+        \end{itemize}
+        \item $d_{\text{trans}}$:
+        \begin{itemize}
+                \item $L$: Packet length (bits)
+                \item $R$: Link \textbf{bandwidth} (bps)
+                \item \textbf{$d_{\text{trans}}$}=$\frac{L}{R}$
+        \end{itemize}
+        \item $d_{\text{prop}}$
+        \begin{itemize}
+          \item $d$: Length of physical link
+                \item $s$: Propogation speed (\~$2*10^{8}\frac{m}{\text{sec}}$)
+                \item \textbf{$d_{\text{prop}}$}=$\frac{d}{s}$
+        \end{itemize}
+\end{itemize}
+
+\thm{Throughput}{
+  The rate $\frac{\text{bits}}{\text{time}}\text{unit}$ at which bits transferred between sender and receiver
+  \begin{itemize}
+    \item Instantaneous: Rate at any given time
+          \item Average: Rate over a longer period of time
+  \end{itemize}
+  \nt{Bottlenecking: Our throughput is bottlenecked to what the \textbf{lowest throughput} of any link in the chain is}
+}
 
 \end{document}
