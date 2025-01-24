@@ -63,11 +63,26 @@
           \item Packets are sent over the internet one at a time with whatever route is available, \textbf{this is called packet switching}
           \item Due to the fact that packets can take multiple routes, congestion and service interruptions do not delay transmissions
   \end{itemize}
+  \textbf{Network Services}
+  \begin{itemize}
+          \item Client and server exchange transport-layer control messages before application data is transmitted (\textbf{handshaking})
+          \item Handshaking creates a TCP connetion between the sockets that is full duplex (both sending and receiving for both)
+    \item Data transmission is reliable and in proper order
+    \item Offers flow control so sender won't overwhelm receiver
+          \item Congestion control: throttles sender when network is overloaded
+  \end{itemize}
   \nt{Standards for internet protocols are created by the \textbf{Internet Engineering Task Force (IETF)}. The documents are called \textbf{Requests for comments (RFCs)}}
 }
 
 \cor{User datagram protocol (UDP)}{
   Provides connectionless service that performs no handshaking thus is faster than TCP, but also does not provide reliability, flow control or congestion control
+
+  \textbf{Network Services}
+  \begin{itemize}
+    \item No handshaking, unreliable transfer
+    \item Packets may arrive out of order
+          \item No congestion control, guarantee of transmission rate or delay, no flow control, no security, no connection setup
+  \end{itemize}
 }
 \thm{Sending packets of data: host perspective}{
 \begin{itemize}
@@ -130,7 +145,7 @@
 \end{figure}
 These delays add up to a total delay called \textbf{$d_{\text{nodal}}$}
 \begin{align*}
-  d_{\text{nodal}}=d_{\text{queue}}+d_{\text{trans}}+d_{\text{prop}}
+	d_{\text{nodal}}=d_{\text{proc}}+d_{\text{queue}}+d_{\text{trans}}+d_{\text{prop}}
 \end{align*}
 \begin{itemize}
   \item $d_{\text{proc}}$:
@@ -166,5 +181,57 @@ These delays add up to a total delay called \textbf{$d_{\text{nodal}}$}
   \end{itemize}
   \nt{Bottlenecking: Our throughput is bottlenecked to what the \textbf{lowest throughput} of any link in the chain is}
 }
+\dfn{Layering}{
+  The modularization of features in complex systems by adding features through each ``layer'' which relies on the services provided by lower layers.
+
+  In reference to networking this is most commonly applied through the \textbf{Internet protocol Stack}
+}
+\cor{Internet Protocol Stack}{
+  \begin{itemize}
+  \item Application: supporting network applications (transmitted data called messages)
+\begin{itemize}
+  \item FTP, SMTP, HTTP
+\end{itemize}
+
+\item Transport: process-process data transfer (transmitted in segments)
+
+\begin{itemize}
+  \item TCP, UDP
+\end{itemize}
+
+\item Network: routing of datagrams from source to destination (datagrams)
+
+\begin{itemize}
+  \item IP, routing protocols
+\end{itemize}
+
+\item Link: data transfer between neighboring  network elements (transmitted element is frame)
+
+\begin{itemize}
+  \item Ethernet, 802.111 (WiFi), PPP
+\end{itemize}
+
+\item Physical: bits “on the wire”
+  \end{itemize}
+  \nt{\textbf{Protocol Data Unit}: A PDU is a specific block of information transferred over the network that describes the different types of data being transferred}
+}
+
+Applicantions use \textbf{Processes} to communicate with another machine, communicating to the process running on a different machine.
+\dfn{Sockets}{
+  Processes send and recieve information for applications through their \textbf{Sockets}.
+
+  Think of it like the two usb holes for a cable to connect the two and communicate data, the socket is where info is sent and received
+}
+Every message must have an \textit{Identifier} of some kind, which both includes the IP address aswell as port numbers
+\dfn{Application Layer Protocol}{
+  How processes in a distributed application communicate by exchanging messages.
+  \begin{itemize}
+    \item Types of messages exchanged
+    \item Syntax of each message type
+    \item Semantics of each message and message fields
+          \item Actions to perform when sending and receiving certain messages and the rules of communication
+  \end{itemize}
+}
+
 
 \end{document}
