@@ -1,4 +1,4 @@
-\documentclass[12pt]{report}
+\documentclass[12pt] {report}
 
 \input{preamble}
 \input{macros}
@@ -10,228 +10,407 @@
 
 \begin{document}
 % \maketitle
-% \newpage% or \cleardoublepage
-% \pdfbookmark[<level>]{<title>}{<dest>}
-\pdfbookmark[section]{\contentsname}{toc}
+% \newpage % or \cleardoublepage
+% \pdfbookmark[<level>] {<title>} {<dest>}
+\pdfbookmark[section] {\contentsname} {toc}
 % \tableofcontents
 % \pagebreak
 \chapter{}
-\dfn{Key points}{
-  \begin{enumerate}
-        \item Networks allow computers to communicate information. Communication requires a shared medium, a common language, and a protocol.
-        \item Protocols are used at all network layers to define the structure, content, timing, and actions involved in communicating between systems.
-        \item Understand the difference between packet switching and circuit switching and the fundamental Internet components.
-        \item The Internet supports two transmission protocols: TCP (connection-oriented reliable service) and UDP (connectionless unreliable service).
-  \end{enumerate}
+\dfn{Key points}
+{
+    \begin{enumerate}
+    \item Networks allow computers to communicate information. Communication requires a shared medium, a common language, and a protocol.
+    \item Protocols are used at all network layers to define the structure, content, timing, and actions involved in communicating between systems.
+    \item Understand the difference between packet switching and circuit switching and the fundamental Internet components.
+\item The Internet supports two transmission protocols:
+    TCP(connection - oriented reliable service) and UDP(connectionless unreliable service).
+    \end{enumerate}
 }
-\dfn{Communication}{
-  \begin{itemize}
-          \item The act of sending information from one party to another
-          \item Sender transmits the info to one or more receivers
-          \item For effective communication we need
-          \begin{itemize}
-            \item Shared medium accessible to both sender and receiver
-            \item Language or encoding representing the information sent
-                  \item Protocol or set of rules explaining how the medium is used by both the sender and receiver
-          \end{itemize}
-  \end{itemize}
-  Types of communication
-  \begin{itemize}
-    \item Broadcast communication: there is a single sender and multiple receivers
-          \item Point-to-point communication: there is a single sender and single receiver
-  \end{itemize}
+\dfn{Communication}
+{
+    \begin{itemize}
+    \item The act of sending information from one party to another
+    \item Sender transmits the info to one or more receivers
+    \item For effective communication we need
+    \begin{itemize}
+    \item Shared medium accessible to both sender and receiver
+    \item Language or encoding representing the information sent
+    \item Protocol or set of rules explaining how the medium is used by both the sender and receiver
+    \end{itemize}
+    \end{itemize}
+    Types of communication
+    \begin{itemize}
+\item Broadcast communication:
+    there is a single sender and multiple receivers
+\item Point - to - point communication:
+    there is a single sender and single receiver
+    \end{itemize}
 }
-\dfn{Protocol}{
-  Defines the format and order of messages exchanged between communicating parties and the actions associated with receiving, transmitting, and other events
+\dfn{Protocol}
+{
+    Defines the format and order of messages exchanged between communicating parties and the actions associated with receiving, transmitting, and other events
 
-  \includegraphics[width=0.5\textwidth]{protocol_example}
+    \includegraphics[width = 0.5\textwidth]{protocol_example}
 
-  Basically a ruleset, there are network protocols that function at various layers such as
-  \begin{itemize}
-    \item Physical layer protocols - define how bits are represented, encoded/decoded, and transmitted on the medium.
+    Basically a ruleset, there are network protocols that function at various layers such as
+    \begin{itemize}
+    \item Physical layer protocols - define how bits are represented, encoded / decoded, and transmitted on the medium.
     \item Link layer protocols - define how bits are segmented and grouped into frames or packets.
-    \item Protocols in upper layers define various services such as connections, error-handling, addressing, and routing.
-  \end{itemize}
+    \item Protocols in upper layers define various services such as connections, error - handling, addressing, and routing.
+    \end{itemize}
 }
-\dfn{TCP/IP (Transmission Control Protocol/Internet Protocol)}{
-  The structure/language and protocol used for communicating between computers on the internet
+\dfn{TCP / IP(Transmission Control Protocol / Internet Protocol)}
+{
 
-  \textbf{How it works}
-  \begin{itemize}
-          \item Information is broken into sequential fixed-size units called \textbf{packets}
-          \item Each packet has space for the unit of data, and also the destination IP address, and it's number in the sequence for reconstruction
-          \item Packets are sent over the internet one at a time with whatever route is available, \textbf{this is called packet switching}
-          \item Due to the fact that packets can take multiple routes, congestion and service interruptions do not delay transmissions
-  \end{itemize}
-  \textbf{Network Services}
-  \begin{itemize}
-          \item Client and server exchange transport-layer control messages before application data is transmitted (\textbf{handshaking})
-          \item Handshaking creates a TCP connetion between the sockets that is full duplex (both sending and receiving for both)
-    \item Data transmission is reliable and in proper order
-    \item Offers flow control so sender won't overwhelm receiver
-          \item Congestion control: throttles sender when network is overloaded
-  \end{itemize}
-  \nt{Standards for internet protocols are created by the \textbf{Internet Engineering Task Force (IETF)}. The documents are called \textbf{Requests for comments (RFCs)}}
+    The structure / language and protocol used for communicating between computers on the internet
+
+    \textbf{How it works}
+\begin{itemize}
+\item Information is broken into sequential fixed - size units called \textbf{packets}
+
+\item Each packet has space for the unit of data, and also the destination IP address, and it's number in the sequence for reconstruction
+    \item Packets are sent over the internet one at a time with whatever route is available, \textbf{this is called packet switching}
+
+\item Due to the fact that packets can take multiple routes, congestion and service interruptions do
+    not delay transmissions
+    \end{itemize}
+\textbf{Network Services}
+\begin{itemize}
+\item Client and server exchange transport - layer control messages before application data is transmitted(\textbf{handshaking})
+
+    \item Handshaking creates a TCP connetion between the sockets that is full duplex(both sending and receiving for both)
+        \item Data transmission is reliable and in proper order
+        \item Offers flow control so sender won't overwhelm receiver
+\item Congestion control :
+        throttles sender when network is overloaded
+        \end{itemize}
+    \nt{Standards for internet protocols are created by the \textbf{Internet Engineering Task Force(IETF)}. The documents are called \textbf{Requests for comments(RFCs)}}
 }
 
-\cor{User datagram protocol (UDP)}{
-  Provides connectionless service that performs no handshaking thus is faster than TCP, but also does not provide reliability, flow control or congestion control
+\cor{User datagram protocol(UDP)}
+{
+    Provides connectionless service that performs no handshaking thus is faster than TCP, but also does not provide reliability, flow control or congestion control
 
-  \textbf{Network Services}
-  \begin{itemize}
+    \textbf{Network Services}
+    \begin{itemize}
     \item No handshaking, unreliable transfer
     \item Packets may arrive out of order
-          \item No congestion control, guarantee of transmission rate or delay, no flow control, no security, no connection setup
-  \end{itemize}
+    \item No congestion control, guarantee of transmission rate or delay, no flow control, no security, no connection setup
+    \end{itemize}
 }
-\thm{Sending packets of data: host perspective}{
-\begin{itemize}
-  \item Gets application message
-        \item Breaks into packets of length $L$ bits
-        \item Transmits packets into access network at \textit{transmission rate/link capacity,link bandwidth} $R$
-\end{itemize}
-    \begin{align*}
-      \text{Packet transmission delay}=\text{Time needed to transmit L-bit to link}=\frac{L}{R\text{bits/sec}}
-    \end{align*}
+\thm{Sending packets of data: host perspective}
+{
+    \begin{itemize}
+    \item Gets application message
+    \item Breaks into packets of length $L$ bits
+    \item Transmits packets into access network at \textit{transmission rate / link capacity, link bandwidth} $R$
+    \end{itemize}
+    \begin{align* }
+    \text{Packet transmission delay} = \text{Time needed to transmit L - bit to link} = \frac{L}{R\text{bits / sec}}
+    \end{align* }
 }
-\cor{Packet Switching: Store-and-Forward}{
-  \begin{itemize}
-    \item Transmission delay: takes L/R seconds to transmit L-bit packet into link at R bps
-          \item Store and forwared: The entire packet must arrive at router before it can be transmitted on next link
-          \item End-to-end Delay: $2\frac{L}{R}$(assuming zero propogation delay)
-  \end{itemize}
-  If the arrival rate is higher than the transmission rate of link then
-  \begin{itemize}
+\cor{Packet Switching: Store - and - Forward}
+{
+    \begin{itemize}
+\item Transmission delay:
+    takes L / R seconds to transmit L - bit packet into link at R bps
+\item Store and forwared:
+    The entire packet must arrive at router before it can be transmitted on next link
+\item End - to - end Delay:
+    $2\frac{L}{R}$(assuming zero propogation delay)
+    \end{itemize}
+    If the arrival rate is higher than the transmission rate of link then
+    \begin{itemize}
     \item Packets will be queued and wait to be transmitted on link
-          \item Packets can be dropped if memory buffer fills up
-  \end{itemize}
+
+    \item Packets can be dropped if memory buffer fills up
+    \end{itemize}
 }
 \textbf{Packet Vs Circuit Switching}
 \begin{itemize}
-  \item Circuit switching: Networks reserve the resources needed for the duration of a communication before sending the data. These resources include buffers at switches and bandwidth on the links. Each communication link is divided among the number of circuits and the bandwidth is \textbf{$\frac{1}{n}$} of the total bandwidth supported on the link. This is devided up either by a fixed value (FDM), or each circuit gets the full bandwidth for a set block of time and rotates between them (TDM)
-        \item Packet switching: Networks don't reserve resources and the communicated data use the necessary resources on demand. Due to the store-forward method, there is a delay at \textit{every link} the packet traverses; therefore the delay is $\frac{L}{R}$ bps. Also incurs \textbf{queue delays} when waiting for the buffer to free up, depends on network traffic; if very busy could result in packet loss
-\end{itemize}
-\nt{
-  There are two main issues with circuit switching
-  \begin{enumerate}
+\item Circuit switching:
+
+Networks reserve the resources needed for the duration of a communication before sending the data. These resources include buffers at switches and bandwidth on the links. Each communication link is divided among the number of circuits and the bandwidth is \textbf{$\frac{1}{n}$} of the total bandwidth supported on the link. This is devided up either by a fixed value(FDM), or each circuit gets the full bandwidth for a set block of time and rotates between them(TDM)
+\item Packet switching :
+    Networks don't reserve resources and the communicated data use the necessary resources on demand. Due to the store-forward method, there is a delay at \textit{every link} the packet traverses; therefore the delay is $\frac{L}{R}$ bps. Also incurs \textbf{queue delays} when waiting for the buffer to free up, depends on network traffic; if very busy could result in packet loss
+    \end{itemize}
+    \nt
+{
+    There are two main issues with circuit switching
+    \begin{enumerate}
     \item They waste bandwidth and resources during idle times as each circuit is garanteed a dedicated bandwidth at all times whether it uses it or not
-          \item There is a significant overhead and complexity to setup circuits and the associated resources. This setup time introduces an initial delay that may be significant for short communications
-  \end{enumerate}
+
+    \item There is a significant overhead and complexity to setup circuits and the associated resources. This setup time introduces an initial delay that may be significant for short communications
+    \end{enumerate}
 
 }
 \section{Packet Delay and Loss}
 \begin{figure}[h]
 \caption{How packet loss and delay occurs}
 \centering
-\includegraphics[width=0.5\textwidth]{packet_delay}
+\includegraphics[width = 0.5\textwidth] {packet_delay}
 \end{figure}
 \textbf{Sources of Packet delay}
 \begin{enumerate}
-  \item Processing delay: Time to read header and direct packet
-        \item Queuing delay: Time waiting in queue to be transmitted (depends on congestion/load)
-        \begin{itemize}
-                \item It's traffic delay can be characterized by $\frac{La}{R}$ where $a$ is the \textbf{average packet arrival time}
-                \item $\frac{La}{R}\~0$: Average queueing delay small
-                \item $\frac{La}{R}\to 1$: Average queueing delay large
-                \item $\frac{La}{R} > 1$: More work than can be serviced at once
-        \end{itemize}
-  \item Transmission delay: Time to transmit packet on link
-        \item Propogation delay: Time to propogate from one end of link to the other (near speed of light)
+\item Processing delay:
+Time to read header and direct packet
+\item Queuing delay:
+Time waiting in queue to be transmitted(depends on congestion / load)
+\begin{itemize}
+\item It's traffic delay can be characterized by $\frac{La}{R}$ where $a$ is the \textbf{average packet arrival time}
+\item $\frac{La} {R}\~0$:
+Average queueing delay small
+\item $\frac{La} {R}\to 1$:
+Average queueing delay large
+\item $\frac{La} {R} > 1$:
+More work than can be serviced at once
+\end{itemize}
+\item Transmission delay:
+Time to transmit packet on link
+\item Propogation delay:
+Time to propogate from one end of link to the other(near speed of light)
 \end{enumerate}
 \begin{figure}[h]
 \caption{Sources of packet delay}
 \centering
-\includegraphics[width=0.5\textwidth]{packet_delay}
+\includegraphics[width = 0.5\textwidth] {packet_delay}
 \end{figure}
 These delays add up to a total delay called \textbf{$d_{\text{nodal}}$}
-\begin{align*}
-	d_{\text{nodal}}=d_{\text{proc}}+d_{\text{queue}}+d_{\text{trans}}+d_{\text{prop}}
-\end{align*}
+\begin{align* }
+d_{\text{nodal}} = d_{\text{proc}} +d_{\text{queue}} +d_{\text{trans}} +d_{\text{prop}}
+                   \end{align* }
+                   \begin{itemize}
+                   \item $d_{\text{proc}}$:
+                   \begin{itemize}
+
+                   \item Checks for bit errors
+                   \item Determine the output link
+                   \item Typically under a milisec
+                   \end{itemize}
+                   \item $d_{\text{queue}}$:
+                   \begin{itemize}
+
+                   \item Time waiting for output link for transmission
+                           \item Depends on congestion level of router
+                           \end{itemize}
+                   \item $d_{\text{trans}}$:
+                           \begin{itemize}
+                   \item $L$:
+                           Packet length(bits)
+                   \item $R$:
+                               Link \textbf{bandwidth}(bps)
+            \item \textbf{$d_{\text{trans}}$} = $\frac{L} {R}$
+\end{itemize}
+\item $d_{\text{prop}}$
 \begin{itemize}
-  \item $d_{\text{proc}}$:
-        \begin{itemize}
-          \item Checks for bit errors
-          \item Determine the output link
-                \item Typically under a milisec
-        \end{itemize}
-        \item $d_{\text{queue}}$:
-        \begin{itemize}
-          \item Time waiting for output link for transmission
-                \item Depends on congestion level of router
-        \end{itemize}
-        \item $d_{\text{trans}}$:
-        \begin{itemize}
-                \item $L$: Packet length (bits)
-                \item $R$: Link \textbf{bandwidth} (bps)
-                \item \textbf{$d_{\text{trans}}$}=$\frac{L}{R}$
-        \end{itemize}
-        \item $d_{\text{prop}}$
-        \begin{itemize}
-          \item $d$: Length of physical link
-                \item $s$: Propogation speed (\~$2*10^{8}\frac{m}{\text{sec}}$)
-                \item \textbf{$d_{\text{prop}}$}=$\frac{d}{s}$
-        \end{itemize}
+\item $d$:
+Length of physical link
+\item $s$:
+Propogation speed(\~$2 * 10 ^ {8}\frac{m} {\text{sec}}$)
+\item \textbf{$d_{\text{prop}}$} = $\frac{d} {s}$
+\end{itemize}
 \end{itemize}
 
-\thm{Throughput}{
-  The rate $\frac{\text{bits}}{\text{time}}\text{unit}$ at which bits transferred between sender and receiver
-  \begin{itemize}
-    \item Instantaneous: Rate at any given time
-          \item Average: Rate over a longer period of time
-  \end{itemize}
-  \nt{Bottlenecking: Our throughput is bottlenecked to what the \textbf{lowest throughput} of any link in the chain is}
+\thm{Throughput}
+{
+    The rate $\frac{\text{bits}}{\text{time}}\text{unit}$ at which bits transferred between sender and receiver
+    \begin{itemize}
+\item Instantaneous:
+    Rate at any given time
+\item Average:
+    Rate over a longer period of time
+    \end{itemize}
+\nt{Bottlenecking: Our throughput is bottlenecked to what the \textbf{lowest throughput} of any link in the chain is}
 }
-\dfn{Layering}{
-  The modularization of features in complex systems by adding features through each ``layer'' which relies on the services provided by lower layers.
+\dfn{Layering}
+{
+    The modularization of features in complex systems by adding features through each ``layer'' which relies on the services provided by lower layers.
 
-  In reference to networking this is most commonly applied through the \textbf{Internet protocol Stack}
+    In reference to networking this is most commonly applied through the \textbf{Internet protocol Stack}
 }
-\cor{Internet Protocol Stack}{
-  \begin{itemize}
-  \item Application: supporting network applications (transmitted data called messages)
-\begin{itemize}
-  \item FTP, SMTP, HTTP
-\end{itemize}
+\cor{Internet Protocol Stack}
+{
+    \begin{itemize}
+\item Application:
+    supporting network applications(transmitted data called messages)
+    \begin{itemize}
+    \item FTP, SMTP, HTTP
+    \end{itemize}
 
-\item Transport: process-process data transfer (transmitted in segments)
+\item Transport:
+    process - process data transfer(transmitted in segments)
 
-\begin{itemize}
-  \item TCP, UDP
-\end{itemize}
+    \begin{itemize}
+    \item TCP, UDP
+    \end{itemize}
 
-\item Network: routing of datagrams from source to destination (datagrams)
+\item Network:
+    routing of datagrams from source to destination(datagrams)
 
-\begin{itemize}
-  \item IP, routing protocols
-\end{itemize}
+    \begin{itemize}
+    \item IP, routing protocols
+    \end{itemize}
 
-\item Link: data transfer between neighboring  network elements (transmitted element is frame)
+\item Link:
+    data transfer between neighboring network elements(transmitted element is frame)
 
-\begin{itemize}
-  \item Ethernet, 802.111 (WiFi), PPP
-\end{itemize}
+    \begin{itemize}
+    \item Ethernet, 802.111(WiFi), PPP
+    \end{itemize}
 
-\item Physical: bits “on the wire”
-  \end{itemize}
-  \nt{\textbf{Protocol Data Unit}: A PDU is a specific block of information transferred over the network that describes the different types of data being transferred}
+\item Physical:
+    bits “on the wire”
+    \end{itemize}
+\nt{\textbf{Protocol Data Unit}: A PDU is a specific block of information transferred over the network that describes the different types of data being transferred}
 }
 
 Applicantions use \textbf{Processes} to communicate with another machine, communicating to the process running on a different machine.
-\dfn{Sockets}{
-  Processes send and recieve information for applications through their \textbf{Sockets}.
+\dfn{Sockets}
+{
 
-  Think of it like the two usb holes for a cable to connect the two and communicate data, the socket is where info is sent and received
+    Processes send and recieve information for applications through their \textbf{Sockets}.
+
+Think of it like the two usb holes for a cable to connect the two and communicate data, the socket is where info is sent and received
 }
 Every message must have an \textit{Identifier} of some kind, which both includes the IP address aswell as port numbers
-\dfn{Application Layer Protocol}{
-  How processes in a distributed application communicate by exchanging messages.
-  \begin{itemize}
-    \item Types of messages exchanged
-    \item Syntax of each message type
-    \item Semantics of each message and message fields
-          \item Actions to perform when sending and receiving certain messages and the rules of communication
-  \end{itemize}
+\dfn{Application Layer Protocol}
+{
+How processes in a distributed application communicate by exchanging messages.
+\begin{itemize}
+\item Types of messages exchanged
+\item Syntax of each message type
+\item Semantics of each message and message fields
+\item Actions to perform when sending and receiving certain messages and the rules of communication
+\end{itemize}
+}
+\section{HTTP}
+\dfn{HTTP Properties}
+{
+Http uses TCP transport
+\begin{itemize}
+\item Creates socket on port 80
+\item Server accepts TCP connection from client
+\item Messages are exchanged between browser and server
+\item TCP connection closed
+\end{itemize}
+\nt{HTTP is stateless therefore the server maintains no info about past client requests}
+}
+HTTP can be either persistent or not, difference being that non - persistence only sends \textit{one} object over the TCP connection then closes it
+
+As each new item requires a new connection, since we close the TCP connection after each object, we calculate time in terms of \textbf{round - trip time(RTT)}
+
+\nt{For non - persistent HTTP, response time is: $2RTT$ +file transmission time}
+\textbf{HTTP Request Message Format}
+
+\includegraphics[width = 0.5\textwidth] {http_headers}
+
+\cor{Method types}
+{
+    A method type is a particular type of interaction with the server that is specified in the method field
+    \begin{itemize}
+\item Method types in HTTP / 1.0:
+    GET, POST, HEAD
+\item Method types in HTTP / 1.1:
+    GET, POST, HEAD, PUT, DELETE
+    \end{itemize}
+    Types
+    \begin{itemize}
+\item GET:
+    request file from server(no entity body)
+\item POST:
+    request file from server(entity body has data)
+\item HEAD:
+    asks server to leave requested object out of response
+\item PUT:
+    uploads file in entity body to path specified in URL field
+\item DELETE:
+    deletes file specified in the URL field
+    \end{itemize}
 }
 
+\cor{Status codes}
+{
+    \begin{itemize}
+    \item 200 OK
+    \item 301 Moved Permanently
+\item Bad Request:
+    request message not understood by server
+    \item 404 Not found
+    \item 505 HTTP Version not supported
+    \end{itemize}
+}
+In earlier version of HTTP, due to the nature of the first - come - first - served resonses;
 
+small objects could get trapped behind bigger ones even if they're more essential. (Head-of-line blocking)
+
+With the introduction of HTTP / 2 transmission order was changed to be based on client - specified object priority
+\dfn{Simple Mail Transfer Protocol(SMTP)}
+{
+    Uses TCP to transfer emails over port 25 and is a direct transfer from sender to receiver
+
+    Phases
+    \begin{enumerate}
+    \item Application - layer handshaking
+    \item Transfer of messages
+    \item Closure
+    \end{enumerate}
+    \nt{All commands and responses are in ASCII, messages are in 7 - bit ASCII}
+    Uses persistent connections. Uses CRLF to determine the end of message
+
+    \includegraphics[width = 0.5\textwidth]{smtp_message}
+
+}
+\dfn{DNS}
+{
+
+    Associates unique host names to IP addresses for hosts. IPv4 Addresses are hierarchical and consist of 4 bytes. This is distributed across many name servers across the world.
+
+    An application - layer protocol that allows hots, routers, and name servers to communicate to resolve names. Uses UDP port 53
+
+    As DNS is hierarchical, therefore higher - level domains(com, org, uk, ca)
+        are responsible for everything else
+            within their lower - level domains.
+
+            Sometimes within an organization they use their own DNS servers to provide authoratative hostnames for IP mappings
+\nt{Local domain name server: Default name server that ISP assigns}
+Once any name server learns a mapping it caches it as it's likely to be requested again sometime soon, expires after a timeout
+\includegraphics[width = 0.5\textwidth]{dns_records}
+}
+\
+
+What do
+    you do
+        when you need to stream videos that can't be embedded in the page?
+        \dfn{Dynamic, Adaptive Streaming over HTTP(DASH)}
+{
+\textbf{Server}:
+
+    \begin{itemize}
+    \item Divides video file into multiple chunks
+    \item Each chunk stored, encoded at different rates
+\item \textit{manifest file}:
+
+    provides URLs for different chunks
+    \end{itemize}
+
+\textbf{Client}
+\begin{itemize}
+\item Periodically measures server - to - client bandwidth
+\item Consulting manifest, requests one chunk at a time
+\begin{itemize}
+\item Chooses maximum coding rate sustainable given current bandwidth
+\item Can choose different coding rates at different points in time(depending on available bandwidth at the time)
+    \end{itemize}
+    \item \textbf{When} to request chunk(such that buffer starvation, or overflow does not occur)
+    \item \textbf{What encoding rate} to request
+    \item \textbf{Where} to request chunk(can request from URL server that is "close" to client or has high available bandwidth
+    \end{itemize}
+    \textbf{Streaming video = } encoding + DASH + playout buffering
+}
+
+\dfn{CDNs}
+{
+
+    Content Distribution Networks are a distributed set of servers in which are used as a choice for the closest, and therefore best, server to deliver the video. May change its path throughout the video.
+}
 \end{document}
